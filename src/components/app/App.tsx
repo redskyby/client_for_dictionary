@@ -1,11 +1,13 @@
 import React from "react";
 import style from "./App.module.scss";
+import { BrowserRouter } from "react-router-dom";
+import NavBar from "../navBar/navBar";
 
 function App() {
   return (
-    <div className={style.reset}>
-      <p>hello Pasha</p>
-    </div>
+    <BrowserRouter>
+      <NavBar />
+    </BrowserRouter>
   );
 }
 
