@@ -6,7 +6,9 @@ import NavBar from "../navBar/navBar";
 function App() {
   return (
     <BrowserRouter>
-      <NavBar />
+      <div className={style.reset}>
+        <NavBar />
+      </div>
     </BrowserRouter>
   );
 }
