@@ -8,10 +8,20 @@ const NavBar = () => {
         <p>Dictionary.</p>
         <p>Good luck!</p>
       </div>
-        <div>
-            <button type={'button'}>Панель администратора</button>
-            <button type={'button'}>Выход</button>
-        </div>
+      <div className={style.container_block_with_buttons}>
+        <button
+          type={"button"}
+          className={style.container_block_with_buttons_button}
+        >
+          Панель администратора
+        </button>
+        <button
+          type={"button"}
+          className={style.container_block_with_buttons_button}
+        >
+          Выход
+        </button>
+      </div>
     </div>
   );
 };
