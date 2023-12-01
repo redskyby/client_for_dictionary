@@ -4,7 +4,7 @@ module.exports = {
     es2021: true,
   },
   extends: [
-    "eslint:recommended",
+    // "eslint:recommended",
     "plugin:@typescript-eslint/recommended",
     "plugin:react/recommended",
     "prettier",
@@ -30,7 +30,7 @@ module.exports = {
   },
   plugins: ["@typescript-eslint", "react", "prettier"],
   rules: {
-    "prettier/prettier": ["warn", { semi: true }],
+    "prettier/prettier": ["warn"],
     "@typescript-eslint/no-unused-vars": "warn",
   },
   settings: {
