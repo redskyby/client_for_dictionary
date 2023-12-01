@@ -1,10 +1,12 @@
 import React from "react";
 import { Navigate, Route, Routes } from "react-router-dom";
 import { authRoutes, publicRoutes } from "../../services/RoutesPath";
-import { ERROR_PAGE } from "../../services/ConstRoutesPaths";
+import Error_404 from "../../page/error/Error_404";
+import { useSelector } from "react-redux";
+import { RootState } from "../../redux";
 
 const AppRoutes = () => {
-    const isAuth: boolean = false;
+    const isAuth: boolean = useSelector((state: RootState) => state.UserToolkit.isAuth);
 
     return (
         <Routes>
@@ -15,7 +17,7 @@ const AppRoutes = () => {
             {publicRoutes.map(({ path, Component }) => {
                 return <Route key={path} path={path} element={<Component />} />;
             })}
-            <Route path="*" element={<Navigate to={ERROR_PAGE} />} />
+            <Route path="*" element={<Error_404 />} />
         </Routes>
     );
 };
