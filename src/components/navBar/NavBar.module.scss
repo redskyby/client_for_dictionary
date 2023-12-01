@@ -1,37 +1,37 @@
 @import "../../services/Variables";
 
 .container {
-  max-width: 1200px;
-  width: 100%;
-  margin: 0 auto;
-  border-radius: $border-radius;
-  border: 1px solid #ccc;
-  padding: 15px 10px;
-  background-color: $background-color-fon;
-  color: #fff;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
-  &_logo {
-    p {
-      font-size: 16px;
-      color: #0d6efd;
-      margin: 10px 0;
+    max-width: 1200px;
+    width: 100%;
+    margin: 0 auto;
+    border-radius: $border-radius;
+    border: 1px solid #ccc;
+    padding: 15px 10px;
+    background-color: $background-color-fon;
+    color: #fff;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    &_logo {
+        p {
+            font-size: 16px;
+            color: #0d6efd;
+            margin: 10px 0;
+        }
     }
-  }
-  &_block_with_buttons {
-    &_button {
-      background-color: #0d6efd;
-      color: #fff;
-      border-radius: $border-radius;
-      border: 1px solid #ccc;
-      padding: 0.5rem 0.5rem;
-      transition: background-color 0.3s ease;
-      font-size: 16px;
-      &:hover {
-        background-color: #0957ca;
-      }
+    &_block_with_buttons {
+        &_button {
+            background-color: #0d6efd;
+            color: #fff;
+            border-radius: $border-radius;
+            border: 1px solid #ccc;
+            padding: 0.5rem 0.5rem;
+            transition: background-color 0.3s ease;
+            font-size: 16px;
+            &:hover {
+                background-color: #0957ca;
+            }
+        }
     }
-  }
 }
