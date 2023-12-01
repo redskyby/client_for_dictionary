@@ -1,0 +1,10 @@
+@import "../../services/Variables";
+
+.container{
+  max-width: 780px;
+  width: 100%;
+  margin: 15px auto 0;
+  border-radius: $border-radius;
+  border: $border;
+  background-color: $background-color-fon;
+}
