@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import style from "./Auth.module.scss";
+import { NavLink } from "react-router-dom";
+import { REGISTRATION_ROUTE } from "../../services/ConstRoutesPaths";
 
 const Auth = () => {
     const [email, setEmail] = useState("");
@@ -18,31 +20,38 @@ const Auth = () => {
     };
     return (
         <div className={style.container}>
-            <div>
+            <div className={style.container_main_title}>
                 <h2>Авторизация</h2>
             </div>
-            <form onSubmit={(e) => handleSubmit(e)}>
-                <label>
-                    Email :
-                    <input
-                        type={"email"}
-                        value={email}
-                        onChange={(e) => handleEmailChange(e)}
-                        placeholder={"Введите свой email"}
-                        required
-                    />
-                </label>
-                <label>
-                    Password :
-                    <input
-                        type={"password"}
-                        value={password}
-                        onChange={(e) => handlePasswordChange(e)}
-                        placeholder={"Введите свой password"}
-                        required
-                    />
-                </label>
-                <button type={"submit"}>Войти</button>
+            <form onSubmit={(e) => handleSubmit(e)} className={style.container_form}>
+                <div className={style.container_form_labels}>
+                    <label className={style.container_form_label}>
+                        <input
+                            type={"email"}
+                            value={email}
+                            onChange={(e) => handleEmailChange(e)}
+                            placeholder={"Введите свой email"}
+                            required
+                        />
+                    </label>
+                    <label className={style.container_form_label}>
+                        <input
+                            type={"password"}
+                            value={password}
+                            onChange={(e) => handlePasswordChange(e)}
+                            placeholder={"Введите свой password"}
+                            required
+                        />
+                    </label>
+                </div>
+                <div className={style.container_form_footer_with_button_and_link}>
+                    <div>
+                        Нет аккаунта? <NavLink to={REGISTRATION_ROUTE}>Зарегистрироваться</NavLink>
+                    </div>
+                    <button type={"submit"} className={style.container_form_button}>
+                        Войти
+                    </button>
+                </div>
             </form>
         </div>
     );
