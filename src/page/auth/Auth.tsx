@@ -1,11 +1,14 @@
 import React, { useState } from "react";
 import style from "./Auth.module.scss";
-import { NavLink } from "react-router-dom";
+import { NavLink, useLocation } from "react-router-dom";
 import { REGISTRATION_ROUTE } from "../../services/ConstRoutesPaths";
 
 const Auth = () => {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
+
+    const location = useLocation();
+    console.log(location);
 
     function handleEmailChange(e: React.ChangeEvent<HTMLInputElement>) {
         setEmail(e.target.value);
