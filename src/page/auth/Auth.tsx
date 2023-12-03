@@ -1,38 +1,47 @@
 import React, { useState } from "react";
 import style from "./Auth.module.scss";
-import { NavLink, useLocation } from "react-router-dom";
-import { REGISTRATION_ROUTE } from "../../services/ConstRoutesPaths";
+import { NavLink, useLocation, useNavigate } from "react-router-dom";
+import { MAIN_PAGE, REGISTRATION_ROUTE } from "../../services/ConstRoutesPaths";
+import { useDispatch } from "react-redux";
+import { IS_SET_AUTH } from "../../redux/slice/UserSlice";
 
 const Auth = () => {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
-
+    const dispatch = useDispatch();
+    const history = useNavigate();
     const location = useLocation();
-    console.log(location);
 
-    function handleEmailChange(e: React.ChangeEvent<HTMLInputElement>) {
-        setEmail(e.target.value);
-    }
-    const handlePasswordChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-        setPassword(e.target.value);
-    };
+    // function handleEmailChange(e: React.ChangeEvent<HTMLInputElement>) {
+    //     setEmail(e.target.value);
+    // }
+    // const handlePasswordChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    //     setPassword(e.target.value);
+    // };
+    //
+    // const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    //     e.preventDefault();
+    //     console.log("я работаю!");
+    // };
 
-    const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    const logIn = (e: React.MouseEvent) => {
         e.preventDefault();
-        console.log("я работаю!");
+        dispatch(IS_SET_AUTH(true));
+        history(MAIN_PAGE);
     };
     return (
         <div className={style.container}>
             <div className={style.container_main_title}>
                 <h2>Авторизация</h2>
             </div>
-            <form onSubmit={(e) => handleSubmit(e)} className={style.container_form}>
+            {/*<form onSubmit={(e) => handleSubmit(e)} className={style.container_form}>*/}
+            <form className={style.container_form}>
                 <div className={style.container_form_labels}>
                     <label className={style.container_form_label}>
                         <input
                             type={"email"}
                             value={email}
-                            onChange={(e) => handleEmailChange(e)}
+                            onChange={(e) => setEmail(e.target.value)}
                             placeholder={"Введите свой email"}
                             required
                         />
@@ -41,7 +50,7 @@ const Auth = () => {
                         <input
                             type={"password"}
                             value={password}
-                            onChange={(e) => handlePasswordChange(e)}
+                            onChange={(e) => setPassword(e.target.value)}
                             placeholder={"Введите свой password"}
                             required
                         />
@@ -51,7 +60,7 @@ const Auth = () => {
                     <div>
                         Нет аккаунта? <NavLink to={REGISTRATION_ROUTE}>Зарегистрироваться</NavLink>
                     </div>
-                    <button type={"submit"} className={style.container_form_button}>
+                    <button type={"submit"} className={style.container_form_button} onClick={(e) => logIn(e)}>
                         Войти
                     </button>
                 </div>

@@ -1,5 +1,5 @@
 import React from "react";
-import { Navigate, Route, Routes } from "react-router-dom";
+import { Route, Routes } from "react-router-dom";
 import { authRoutes, publicRoutes } from "../../services/RoutesPath";
 import Error_404 from "../../page/error/Error_404";
 import { useSelector } from "react-redux";
