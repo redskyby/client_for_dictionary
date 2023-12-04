@@ -5,14 +5,7 @@ import { LOGIN_ROUTE, MAIN_PAGE, REGISTRATION_ROUTE } from "../../services/Const
 import { useDispatch } from "react-redux";
 import { IS_SET_AUTH } from "../../redux/slice/UserSlice";
 import UserApi from "../../api/userApi";
-
-interface CustomError extends Error {
-    response?: {
-        data?: {
-            message?: string;
-        };
-    };
-}
+import CustomError from "../../services/ErrorApi";
 
 const Auth = () => {
     const [email, setEmail] = useState("");
@@ -37,7 +30,6 @@ const Auth = () => {
                 history(MAIN_PAGE);
             }
         } catch (e: unknown) {
-            // alert(e.response?.data?.message);
             if (e instanceof Error && (e as CustomError).response) {
                 alert((e as CustomError).response?.data?.message);
             } else {
