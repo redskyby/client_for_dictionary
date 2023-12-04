@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import style from "./Auth.module.scss";
 import { NavLink, useLocation, useNavigate } from "react-router-dom";
-import { MAIN_PAGE, REGISTRATION_ROUTE } from "../../services/ConstRoutesPaths";
+import { LOGIN_ROUTE, MAIN_PAGE, REGISTRATION_ROUTE } from "../../services/ConstRoutesPaths";
 import { useDispatch } from "react-redux";
 import { IS_SET_AUTH } from "../../redux/slice/UserSlice";
 
@@ -11,18 +11,8 @@ const Auth = () => {
     const dispatch = useDispatch();
     const history = useNavigate();
     const location = useLocation();
+    const isLogin : boolean = location.pathname === LOGIN_ROUTE;
 
-    // function handleEmailChange(e: React.ChangeEvent<HTMLInputElement>) {
-    //     setEmail(e.target.value);
-    // }
-    // const handlePasswordChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    //     setPassword(e.target.value);
-    // };
-    //
-    // const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-    //     e.preventDefault();
-    //     console.log("я работаю!");
-    // };
 
     const logIn = (e: React.MouseEvent) => {
         e.preventDefault();
@@ -34,7 +24,6 @@ const Auth = () => {
             <div className={style.container_main_title}>
                 <h2>Авторизация</h2>
             </div>
-            {/*<form onSubmit={(e) => handleSubmit(e)} className={style.container_form}>*/}
             <form className={style.container_form}>
                 <div className={style.container_form_labels}>
                     <label className={style.container_form_label}>
