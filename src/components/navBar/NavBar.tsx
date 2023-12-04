@@ -11,8 +11,6 @@ const NavBar = () => {
     const dispatch = useDispatch();
     const history = useNavigate();
 
-    console.log(isAuth);
-
     const logOut = (): void => {
         dispatch(IS_SET_AUTH(false));
         localStorage.removeItem("token");

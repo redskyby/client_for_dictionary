@@ -4,6 +4,15 @@ import { NavLink, useLocation, useNavigate } from "react-router-dom";
 import { LOGIN_ROUTE, MAIN_PAGE, REGISTRATION_ROUTE } from "../../services/ConstRoutesPaths";
 import { useDispatch } from "react-redux";
 import { IS_SET_AUTH } from "../../redux/slice/UserSlice";
+import UserApi from "../../api/userApi";
+
+interface CustomError extends Error {
+    response?: {
+        data?: {
+            message?: string;
+        };
+    };
+}
 
 const Auth = () => {
     const [email, setEmail] = useState("");
@@ -11,18 +20,37 @@ const Auth = () => {
     const dispatch = useDispatch();
     const history = useNavigate();
     const location = useLocation();
-    const isLogin : boolean = location.pathname === LOGIN_ROUTE;
+    const isLogin: boolean = location.pathname === LOGIN_ROUTE;
 
-
-    const logIn = (e: React.MouseEvent) => {
+    const logIn = async (e: React.MouseEvent) => {
         e.preventDefault();
-        dispatch(IS_SET_AUTH(true));
-        history(MAIN_PAGE);
+        try {
+            let data;
+            if (isLogin) {
+                data = await UserApi.login(email, password);
+            } else {
+                data = await UserApi.registration(email, password);
+            }
+
+            if (data !== undefined) {
+                dispatch(IS_SET_AUTH(true));
+                history(MAIN_PAGE);
+            }
+        } catch (e: unknown) {
+            // alert(e.response?.data?.message);
+            if (e instanceof Error && (e as CustomError).response) {
+                alert((e as CustomError).response?.data?.message);
+            } else {
+                // Обработка других типов ошибок
+                console.error("Unexpected error:", e);
+            }
+        }
     };
+
     return (
         <div className={style.container}>
             <div className={style.container_main_title}>
-                <h2>Авторизация</h2>
+                <h2>{isLogin ? "Авторизация" : "Регистрация"}</h2>
             </div>
             <form className={style.container_form}>
                 <div className={style.container_form_labels}>
@@ -46,9 +74,15 @@ const Auth = () => {
                     </label>
                 </div>
                 <div className={style.container_form_footer_with_button_and_link}>
-                    <div>
-                        Нет аккаунта? <NavLink to={REGISTRATION_ROUTE}>Зарегистрироваться</NavLink>
-                    </div>
+                    {isLogin ? (
+                        <div>
+                            Нет аккаунта? <NavLink to={REGISTRATION_ROUTE}>Зарегистрируйся!</NavLink>
+                        </div>
+                    ) : (
+                        <div>
+                            Есть аккаунт? <NavLink to={LOGIN_ROUTE}>Войдите!</NavLink>
+                        </div>
+                    )}
                     <button type={"submit"} className={style.container_form_button} onClick={(e) => logIn(e)}>
                         Войти
                     </button>

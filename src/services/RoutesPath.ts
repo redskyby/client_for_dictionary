@@ -12,7 +12,7 @@ export const authRoutes: { path: string; Component: React.FunctionComponent }[] 
     {
         path: MAIN_PAGE,
         Component: MainPage,
-    }
+    },
 ];
 
 export const publicRoutes: { path: string; Component: React.FC }[] = [
@@ -23,5 +23,5 @@ export const publicRoutes: { path: string; Component: React.FC }[] = [
     {
         path: REGISTRATION_ROUTE,
         Component: Auth,
-    }
+    },
 ];
