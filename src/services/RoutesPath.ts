@@ -1,5 +1,5 @@
 import { ADMIN_ROUTE, LOGIN_ROUTE, MAIN_PAGE, REGISTRATION_ROUTE } from "./ConstRoutesPaths";
-import Admin from "../page/Admin/Admin";
+import Admin from "../page/admin/Admin";
 import MainPage from "../page/mainPage/MainPage";
 import Auth from "../page/auth/Auth";
 import React from "react";

@@ -1,4 +1,4 @@
-import { $host } from "./index";
+import { $authHost, $host } from "./index";
 import { jwtDecode } from "jwt-decode";
 import CustomError from "../services/ErrorApi";
 
@@ -17,7 +17,7 @@ class UserApi {
                 alert((e as CustomError).response?.data?.message);
             } else {
                 // Обработка других типов ошибок
-                console.error("Unexpected error:", e);
+                alert(e);
             }
         }
     }
@@ -31,9 +31,15 @@ class UserApi {
             if (e instanceof Error && (e as CustomError).response) {
                 alert((e as CustomError).response?.data?.message);
             } else {
-                console.error("Unexpected error:", e);
+                alert(e);
             }
         }
+    }
+
+    public async check() {
+        const { data } = await $authHost.get("api/user/check");
+        localStorage.setItem("token", data.token);
+        return jwtDecode(data.token);
     }
 }
 
