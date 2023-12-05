@@ -28,14 +28,16 @@
                 padding: 0.5rem 0.5rem;
                 background-color: #a9a9a9;
                 color: #ffffff;
-                box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1), 0 4px 8px rgba(0, 0, 0, 0.1);
+                box-shadow:
+                    0 2px 4px rgba(0, 0, 0, 0.1),
+                    0 4px 8px rgba(0, 0, 0, 0.1);
                 transition: background-color 0.3s ease-in-out;
                 border-radius: $border-radius;
                 border: $border;
                 margin: 10px 0;
                 cursor: pointer;
                 &:hover {
-                    background-color: #7D7D7D;
+                    background-color: #7d7d7d;
                 }
             }
         }

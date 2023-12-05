@@ -3,7 +3,7 @@
 .container {
     max-width: 1200px;
     width: 100%;
-    margin: 0 auto;
+    margin: 10px auto 0;
     border-radius: $border-radius;
     border: $border;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -27,7 +27,9 @@
             color: #fff;
             border-radius: $border-radius;
             border: $border;
-            box-shadow: 0 8px 16px rgba(13, 110, 253, 0.2), 0 0 8px rgba(13, 110, 253, 0.2);
+            box-shadow:
+                0 8px 16px rgba(13, 110, 253, 0.2),
+                0 0 8px rgba(13, 110, 253, 0.2);
             padding: 0.5rem 0.5rem;
             transition: background-color 0.3s ease;
             font-size: 16px;
