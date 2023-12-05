@@ -1,4 +1,43 @@
+@import "../../services/Variables";
+
 .container {
     margin: 15px auto;
     max-width: 780px;
+    border-radius: $border-radius;
+    border: $border;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 15px 10px;
+    background-color: $background-color-fon;
+    color: #000;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    &_main_text {
+        margin: 10px auto;
+    }
+    &_main_section {
+        display: flex;
+        width: 100%;
+        flex-direction: row;
+        justify-content: space-around;
+        align-items: center;
+        &_items {
+            list-style: none;
+            &_item {
+                padding: 0.5rem 0.5rem;
+                background-color: #a9a9a9;
+                color: #ffffff;
+                box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1), 0 4px 8px rgba(0, 0, 0, 0.1);
+                transition: background-color 0.3s ease-in-out;
+                border-radius: $border-radius;
+                border: $border;
+                margin: 10px 0;
+                cursor: pointer;
+                &:hover {
+                    background-color: #7D7D7D;
+                }
+            }
+        }
+    }
 }

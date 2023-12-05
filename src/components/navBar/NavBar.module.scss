@@ -6,6 +6,7 @@
     margin: 0 auto;
     border-radius: $border-radius;
     border: $border;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     padding: 15px 10px;
     background-color: $background-color-fon;
     color: #fff;
@@ -25,10 +26,12 @@
             background-color: #0d6efd;
             color: #fff;
             border-radius: $border-radius;
-            border: 1px solid #ccc;
+            border: $border;
+            box-shadow: 0 8px 16px rgba(13, 110, 253, 0.2), 0 0 8px rgba(13, 110, 253, 0.2);
             padding: 0.5rem 0.5rem;
             transition: background-color 0.3s ease;
             font-size: 16px;
+            cursor: pointer;
             &:hover {
                 background-color: #0957ca;
             }
