@@ -1,20 +1,37 @@
 import React from "react";
 import style from "./MainPage.module.scss";
+import { useDispatch, useSelector } from "react-redux";
+import { SET_CURRENT_WORD } from "../../redux/slice/WordsSlice";
+import { RootState } from "../../redux";
+
+interface Word {
+    id: number;
+    word: string;
+}
+
 const MainPage = () => {
-    const words: { id: number; name: string }[] = [
-        { id: 1, name: "Pasha" },
-        { id: 2, name: "Sasha" },
-        { id: 3, name: "Glasha" },
-        { id: 4, name: "Masha" },
-        { id: 5, name: "Dasha" },
+    const dispatch = useDispatch();
+    const currentWord: Word = useSelector((state: RootState) => state.WordsToolkit.currentWord);
+
+    console.log("currentWord", currentWord);
+    const words: Word[] = [
+        { id: 1, word: "Pasha" },
+        { id: 2, word: "Sasha" },
+        { id: 3, word: "Glasha" },
+        { id: 4, word: "Masha" },
+        { id: 5, word: "Dasha" },
     ];
-    const translate: { id: number; name: string }[] = [
-        { id: 1, name: "Паша" },
-        { id: 2, name: "Саша" },
-        { id: 3, name: "Глаша" },
-        { id: 4, name: "Маша" },
-        { id: 5, name: "Даша" },
+    const translate: Word[] = [
+        { id: 1, word: "Паша" },
+        { id: 2, word: "Саша" },
+        { id: 3, word: "Глаша" },
+        { id: 4, word: "Маша" },
+        { id: 5, word: "Даша" },
     ];
+
+    const checkWords = (currentWord: Word, a: Word) => {
+        currentWord.id === a.id ? console.log("совпало") : console.log("Не совпало");
+    };
 
     return (
         <div className={style.container}>
@@ -26,8 +43,12 @@ const MainPage = () => {
                     <ul className={style.container_main_section_items}>
                         {words.map((i) => {
                             return (
-                                <li className={style.container_main_section_items_item} key={i.id}>
-                                    {i.id}) {i.name}
+                                <li
+                                    className={style.container_main_section_items_item}
+                                    key={i.id}
+                                    onClick={() => dispatch(SET_CURRENT_WORD(i))}
+                                >
+                                    {i.id}) {i.word}
                                 </li>
                             );
                         })}
@@ -37,8 +58,12 @@ const MainPage = () => {
                     <ul className={style.container_main_section_items}>
                         {translate.map((i) => {
                             return (
-                                <li className={style.container_main_section_items_item} key={i.id}>
-                                    {i.id}) {i.name}
+                                <li
+                                    className={style.container_main_section_items_item}
+                                    key={i.id}
+                                    onClick={() => checkWords(currentWord, i)}
+                                >
+                                    {i.id}) {i.word}
                                 </li>
                             );
                         })}

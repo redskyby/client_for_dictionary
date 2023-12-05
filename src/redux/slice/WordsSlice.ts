@@ -8,6 +8,7 @@ interface Word {
 const initialState = {
     words: [] as Word[],
     translate: [] as Word[],
+    currentWord: {} as Word,
 };
 
 const WordSlice = createSlice({
@@ -20,8 +21,11 @@ const WordSlice = createSlice({
         SET_TRANSLATE: (state, action: PayloadAction<Word[]>) => {
             state.translate = [...action.payload];
         },
+        SET_CURRENT_WORD: (state, action: PayloadAction<Word>) => {
+            state.currentWord = action.payload;
+        },
     },
 });
 
 export default WordSlice.reducer;
-export const { SET_WORDS, SET_TRANSLATE } = WordSlice.actions;
+export const { SET_WORDS, SET_TRANSLATE, SET_CURRENT_WORD } = WordSlice.actions;
