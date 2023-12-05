@@ -1,5 +1,5 @@
 {
-  "name": "client for dictionary",
+  "name": "client_for_dictionary",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -29,7 +29,7 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "format": "prettier --write \"{**/*,*}.{js,ts,jsx,tsx, scss}\"",
+    "format": "prettier --write \"src/**/*.{js,ts,jsx,tsx,scss}\"",
     "lint": "eslint ."
   },
   "browserslist": {

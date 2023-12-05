@@ -32,7 +32,7 @@ function App() {
 
     if (loading) {
         return (
-            <div>
+            <div className={style.loader}>
                 <RingLoader color={"#36d7b7"} size={"100px"} />
             </div>
         );
@@ -40,7 +40,7 @@ function App() {
 
     return (
         <BrowserRouter>
-            <div className={style.reset}>
+            <div>
                 <NavBar />
                 <AppRoutes />
             </div>
