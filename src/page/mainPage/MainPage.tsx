@@ -6,6 +6,10 @@ const MainPage = () => {
             <div>
                 <h2>Let&apos;s match the words.</h2>
             </div>
+            <div>
+                <div></div>
+                <div></div>
+            </div>
         </div>);
 };
 
