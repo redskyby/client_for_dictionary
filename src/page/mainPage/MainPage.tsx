@@ -1,8 +1,9 @@
-import React from "react";
+import React, { useState } from "react";
 import style from "./MainPage.module.scss";
 import { useDispatch, useSelector } from "react-redux";
 import { SET_CURRENT_WORD } from "../../redux/slice/WordsSlice";
 import { RootState } from "../../redux";
+import Alert from "../../components/modals/alert/Alert";
 
 interface Word {
     id: number;
@@ -12,8 +13,8 @@ interface Word {
 const MainPage = () => {
     const dispatch = useDispatch();
     const currentWord: Word = useSelector((state: RootState) => state.WordsToolkit.currentWord);
+    const [show, hidden] = useState<boolean>(false);
 
-    console.log("currentWord", currentWord);
     const words: Word[] = [
         { id: 1, word: "Pasha" },
         { id: 2, word: "Sasha" },
@@ -29,8 +30,15 @@ const MainPage = () => {
         { id: 5, word: "Даша" },
     ];
 
+    console.log(currentWord.id);
+
     const checkWords = (currentWord: Word, a: Word) => {
-        currentWord.id === a.id ? console.log("совпало") : console.log("Не совпало");
+        if (currentWord.id !== undefined) {
+            currentWord.id === a.id ? console.log("совпало") : console.log("Не совпало");
+        } else {
+            console.log("works");
+            hidden(true);
+        }
     };
 
     return (
@@ -70,6 +78,8 @@ const MainPage = () => {
                     </ul>
                 </div>
             </div>
+
+            <Alert show={show} hidden={hidden} />
         </div>
     );
 };
