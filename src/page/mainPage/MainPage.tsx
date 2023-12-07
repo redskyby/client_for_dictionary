@@ -1,9 +1,10 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import style from "./MainPage.module.scss";
 import { useDispatch, useSelector } from "react-redux";
 import { SET_CURRENT_WORD } from "../../redux/slice/WordsSlice";
 import { RootState } from "../../redux";
 import Alert from "../../components/modals/alert/Alert";
+import WordsApi from "../../api/wordsApi";
 
 interface Word {
     id: number;
@@ -30,7 +31,12 @@ const MainPage = () => {
         { id: 5, word: "Даша" },
     ];
 
-    console.log(currentWord.id);
+    useEffect(() => {
+        WordsApi.getWords().then((data) => {
+            const { words, translations } = data;
+            console.log(words, translations);
+        });
+    }, []);
 
     const checkWords = (currentWord: Word, a: Word) => {
         if (currentWord.id !== undefined) {
