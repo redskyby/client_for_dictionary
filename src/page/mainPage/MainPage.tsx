@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { SET_CURRENT_WORD, SET_TRANSLATES, SET_WORDS } from "../../redux/slice/WordsSlice";
 import { RootState } from "../../redux";
 import Alert from "../../components/modals/alert/Alert";
-import WordsApi from "../../api/wordsApi";
+import WordsApi from "../../api/WordsApi";
 import { Word } from "../../services/Interfeces";
 import { Translate } from "../../services/Interfeces";
 import { RingLoader } from "react-spinners";

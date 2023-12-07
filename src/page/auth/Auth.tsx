@@ -4,7 +4,7 @@ import { NavLink, useLocation, useNavigate } from "react-router-dom";
 import { LOGIN_ROUTE, MAIN_PAGE, REGISTRATION_ROUTE } from "../../services/ConstRoutesPaths";
 import { useDispatch } from "react-redux";
 import { IS_SET_AUTH } from "../../redux/slice/UserSlice";
-import UserApi from "../../api/userApi";
+import UserApi from "../../api/UserApi";
 import { CustomError } from "../../services/Interfeces";
 
 const Auth = () => {

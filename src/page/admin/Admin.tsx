@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import style from "./Admin.module.scss";
 import { useNavigate } from "react-router-dom";
 import { MAIN_PAGE } from "../../services/ConstRoutesPaths";
-import wordsApi from "../../api/wordsApi";
+import wordsApi from "../../api/WordsApi";
 
 const Admin = () => {
     const [word, setWord] = useState<string>("");

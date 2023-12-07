@@ -4,7 +4,7 @@ import { BrowserRouter } from "react-router-dom";
 import NavBar from "../navBar/NavBar";
 import AppRoutes from "../appRoutes/AppRoutes";
 import { useDispatch } from "react-redux";
-import UserApi from "../../api/userApi";
+import UserApi from "../../api/UserApi";
 import { IS_SET_AUTH } from "../../redux/slice/UserSlice";
 import { RingLoader } from "react-spinners";
 
