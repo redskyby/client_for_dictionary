@@ -7,20 +7,22 @@ import Alert from "../../components/modals/alert/Alert";
 import WordsApi from "../../api/wordsApi";
 import { Word } from "../../services/Interfeces";
 import { Translate } from "../../services/Interfeces";
+import { RingLoader } from "react-spinners";
 
 const MainPage = () => {
+    const [loading, setLoading] = useState(true);
     const dispatch = useDispatch();
     const currentWord: Word = useSelector((state: RootState) => state.WordsToolkit.currentWord);
     const [show, hidden] = useState<boolean>(false);
     const words: Word[] = useSelector((state: RootState) => state.WordsToolkit.words);
     const translate: Translate[] = useSelector((state: RootState) => state.WordsToolkit.translate);
 
-
     useEffect(() => {
         WordsApi.getWords().then((data) => {
             const { words, translations } = data;
             dispatch(SET_WORDS(words));
             dispatch(SET_TRANSLATES(translations));
+            setLoading(false);
         });
     }, []);
 
@@ -33,6 +35,13 @@ const MainPage = () => {
         }
     };
 
+    if (loading) {
+        return (
+            <div className={style.container}>
+                <RingLoader color={"#36d7b7"} size={"100px"} />
+            </div>
+        );
+    }
 
     return (
         <div className={style.container}>
@@ -71,7 +80,6 @@ const MainPage = () => {
                     </ul>
                 </div>
             </div>
-
             <Alert show={show} hidden={hidden} />
         </div>
     );
