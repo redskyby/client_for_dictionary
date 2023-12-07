@@ -1,6 +1,6 @@
 import { $authHost, $host } from "./index";
 import { jwtDecode } from "jwt-decode";
-import CustomError from "../services/ErrorApi";
+import { CustomError } from "../services/Interfeces";
 
 class UserApi {
     public async registration(email: string, password: string) {

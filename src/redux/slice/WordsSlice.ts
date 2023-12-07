@@ -1,19 +1,6 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-
-interface Word {
-    wordId: number;
-    word: string;
-    createdAt : string,
-    updatedAt : string
-}
-
-interface Translate {
-    translationId: number;
-    translation1 : string,
-    translation2 : string | null,
-    createdAt : string,
-    updatedAt : string
-}
+import { Word } from "../../services/Interfeces";
+import { Translate } from "../../services/Interfeces";
 
 const initialState = {
     words: [] as Word[],

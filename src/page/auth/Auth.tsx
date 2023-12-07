@@ -5,7 +5,7 @@ import { LOGIN_ROUTE, MAIN_PAGE, REGISTRATION_ROUTE } from "../../services/Const
 import { useDispatch } from "react-redux";
 import { IS_SET_AUTH } from "../../redux/slice/UserSlice";
 import UserApi from "../../api/userApi";
-import CustomError from "../../services/ErrorApi";
+import { CustomError } from "../../services/Interfeces";
 
 const Auth = () => {
     const [email, setEmail] = useState("");

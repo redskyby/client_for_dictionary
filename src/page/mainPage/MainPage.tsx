@@ -5,21 +5,8 @@ import { SET_CURRENT_WORD, SET_TRANSLATES, SET_WORDS } from "../../redux/slice/W
 import { RootState } from "../../redux";
 import Alert from "../../components/modals/alert/Alert";
 import WordsApi from "../../api/wordsApi";
-
-interface Word {
-    wordId: number;
-    word: string;
-    createdAt : string,
-    updatedAt : string
-}
-
-interface Translate {
-    translationId: number;
-    translation1 : string,
-    translation2 : string | null,
-    createdAt : string,
-    updatedAt : string
-}
+import { Word } from "../../services/Interfeces";
+import { Translate } from "../../services/Interfeces";
 
 const MainPage = () => {
     const dispatch = useDispatch();

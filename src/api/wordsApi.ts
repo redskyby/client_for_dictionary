@@ -1,5 +1,5 @@
 import { $host } from "./index";
-import CustomError from "../services/ErrorApi";
+import { CustomError } from "../services/Interfeces";
 
 class WordsApi {
     public async getWords() {
