@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import style from "./Admin.module.scss";
 import { useNavigate } from "react-router-dom";
 import { MAIN_PAGE } from "../../services/ConstRoutesPaths";
+import wordsApi from "../../api/wordsApi";
 
 const Admin = () => {
     const [word, setWord] = useState<string>("");
@@ -14,7 +15,16 @@ const Admin = () => {
     };
 
     const addTheWordInTheDictionary = () => {
-        console.log(word, translate1, translate2);
+        if (word !== undefined || translate1 !== undefined) {
+            wordsApi
+                .createWord(word, translate1, translate2)
+                .then((data) => {
+                    console.log(data);
+                })
+                .catch((e) => console.log(e.message));
+        } else {
+            console.log("Пустые значения");
+        }
     };
 
     return (
@@ -38,7 +48,7 @@ const Admin = () => {
                         Основной перевод на русском языке
                         <input
                             type="text"
-                            placeholder={"Основной перевод "}
+                            placeholder={"Основной перевод"}
                             value={translate1}
                             onChange={(e) => setTranslate1(e.target.value)}
                         />
@@ -47,7 +57,7 @@ const Admin = () => {
                         Дополнительный перевод, может быть пустое значение
                         <input
                             type="text"
-                            placeholder={"Уточняющий перевод "}
+                            placeholder={"Уточняющий перевод"}
                             value={translate2}
                             onChange={(e) => setTranslate2(e.target.value)}
                         />

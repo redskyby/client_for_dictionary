@@ -18,12 +18,14 @@ const MainPage = () => {
     const translate: Translate[] = useSelector((state: RootState) => state.WordsToolkit.translate);
 
     useEffect(() => {
-        WordsApi.getWords().then((data) => {
-            const { words, translations } = data;
-            dispatch(SET_WORDS(words));
-            dispatch(SET_TRANSLATES(translations));
-            setLoading(false);
-        });
+        WordsApi.getWords()
+            .then((data) => {
+                const { words, translations } = data;
+                dispatch(SET_WORDS(words));
+                dispatch(SET_TRANSLATES(translations));
+                setLoading(false);
+            })
+            .catch((e) => console.log(e.message));
     }, []);
 
     const checkWords = (currentWord: Word, a: Translate) => {
