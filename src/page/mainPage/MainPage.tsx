@@ -12,9 +12,9 @@ const MainPage = () => {
     const dispatch = useDispatch();
     const currentWord: Word = useSelector((state: RootState) => state.WordsToolkit.currentWord);
     const [show, hidden] = useState<boolean>(false);
-
     const words: Word[] = useSelector((state: RootState) => state.WordsToolkit.words);
     const translate: Translate[] = useSelector((state: RootState) => state.WordsToolkit.translate);
+
 
     useEffect(() => {
         WordsApi.getWords().then((data) => {
@@ -32,7 +32,8 @@ const MainPage = () => {
             hidden(true);
         }
     };
-    console.log(translate);
+
+
     return (
         <div className={style.container}>
             <div className={style.container_main_text}>

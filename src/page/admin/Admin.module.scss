@@ -1,0 +1,19 @@
+@import "../../services/Variables";
+
+.container{
+  margin: 15px auto;
+  max-width: 780px;
+  border-radius: $border-radius;
+  border: $border;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 15px 10px;
+  background-color: $background-color-fon;
+  color: #000;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  &_main_text {
+    margin: 10px auto;
+  }
+}
