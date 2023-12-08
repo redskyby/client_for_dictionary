@@ -6,7 +6,7 @@ export const AllWordsQuery = createApi({
     baseQuery: fetchBaseQuery({ baseUrl: process.env.REACT_APP_API_URL }),
     endpoints: (build) => ({
         getAllWords: build.query<Word[], void>({
-            query: () => "api/word/getAll",
+            query: () => "api/word/getAll/?count=5",
         }),
     }),
 });
