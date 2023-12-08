@@ -6,7 +6,7 @@ class WordsApi {
         try {
             const { data } = await $host.get("api/word/getAll", {
                 params: {
-                    count: 10,
+                    count: 5,
                 },
             });
 
