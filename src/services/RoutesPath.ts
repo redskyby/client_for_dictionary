@@ -1,8 +1,9 @@
-import { ADMIN_ROUTE, LOGIN_ROUTE, MAIN_PAGE, REGISTRATION_ROUTE } from "./ConstRoutesPaths";
+import { ADMIN_ROUTE, LIST_OF_ALL_WORDS, LOGIN_ROUTE, MAIN_PAGE, REGISTRATION_ROUTE } from "./ConstRoutesPaths";
 import Admin from "../page/admin/Admin";
 import MainPage from "../page/mainPage/MainPage";
 import Auth from "../page/auth/Auth";
 import React from "react";
+import ListOfAllWords from "../page/listOfAllWords/ListOfAllWords";
 
 export const authRoutes: { path: string; Component: React.FunctionComponent }[] = [
     {
@@ -12,6 +13,10 @@ export const authRoutes: { path: string; Component: React.FunctionComponent }[] 
     {
         path: MAIN_PAGE,
         Component: MainPage,
+    },
+    {
+        path: LIST_OF_ALL_WORDS,
+        Component: ListOfAllWords,
     },
 ];
 
