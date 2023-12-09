@@ -2,7 +2,7 @@ import React from "react";
 import style from "./NavBar.module.scss";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../../redux";
-import { ADMIN_ROUTE, LOGIN_ROUTE } from "../../services/ConstRoutesPaths";
+import { ADMIN_ROUTE, LIST_OF_ALL_WORDS, LOGIN_ROUTE } from "../../services/ConstRoutesPaths";
 import { useNavigate } from "react-router-dom";
 import { IS_SET_AUTH } from "../../redux/slice/UserSlice";
 
@@ -32,6 +32,13 @@ const NavBar = () => {
                             onClick={() => history(ADMIN_ROUTE)}
                         >
                             Панель администратора
+                        </button>
+                        <button
+                            type={"button"}
+                            className={style.container_block_with_buttons_button}
+                            onClick={() => history(LIST_OF_ALL_WORDS)}
+                        >
+                            Просмотреть всё слово
                         </button>
                         <button
                             type={"button"}
