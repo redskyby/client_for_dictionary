@@ -18,10 +18,12 @@ const Admin = () => {
         if (word !== undefined || translate1 !== undefined) {
             wordsApi
                 .createWord(word, translate1, translate2)
-                .then((data) => {
-                    console.log(data);
-                })
-                .catch((e) => console.log(e.message));
+                .catch((e) => console.log(e.message))
+                .finally(() => {
+                    setWord("");
+                    setTranslate1("");
+                    setTranslate2("");
+                });
         } else {
             console.log("Пустые значения");
         }
