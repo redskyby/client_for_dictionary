@@ -1,6 +1,7 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { Word } from "../../services/Interfeces";
 import { Translate } from "../../services/Interfeces";
+import shuffleArray from "../../services/ShuffleArray";
 
 const initialState = {
     words: [] as Word[],
@@ -17,6 +18,8 @@ const WordSlice = createSlice({
         },
         SET_TRANSLATES: (state, action: PayloadAction<Translate[]>) => {
             state.translate = [...action.payload];
+
+            shuffleArray(state.translate);
         },
         SET_CURRENT_WORD: (state, action: PayloadAction<Word>) => {
             state.currentWord = action.payload;
