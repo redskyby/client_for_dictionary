@@ -75,7 +75,7 @@ const MainPage = () => {
                                     key={i.translationId}
                                     onClick={() => checkWords(currentWord, i)}
                                 >
-                                    {i.translationId}) {i.translation1}
+                                    {i.translation1}
                                 </li>
                             );
                         })}

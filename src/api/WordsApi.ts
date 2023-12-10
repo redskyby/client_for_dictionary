@@ -17,6 +17,7 @@ class WordsApi {
             } else {
                 alert(e);
             }
+            // Возбудить reject промиса, чтобы блок catch был вызван в дальнейшем
             return Promise.reject(e);
         }
     }
@@ -35,7 +36,7 @@ class WordsApi {
             } else {
                 alert(e);
             }
-
+            // Возбудить reject промиса, чтобы блок catch был вызван в дальнейшем
             return Promise.reject(e);
         }
     }
