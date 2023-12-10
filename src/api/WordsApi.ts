@@ -17,6 +17,7 @@ class WordsApi {
             } else {
                 alert(e);
             }
+            return Promise.reject(e);
         }
     }
     public async createWord(word1: string, translate11: string, translate21: null | string) {
@@ -34,6 +35,8 @@ class WordsApi {
             } else {
                 alert(e);
             }
+
+            return Promise.reject(e);
         }
     }
 }

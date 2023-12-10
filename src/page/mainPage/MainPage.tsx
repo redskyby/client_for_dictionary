@@ -32,7 +32,6 @@ const MainPage = () => {
         if (currentWord.wordId !== undefined) {
             currentWord.wordId === a.translationId ? console.log("совпало") : console.log("Не совпало");
         } else {
-            console.log("works");
             hidden(true);
         }
     };

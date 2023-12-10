@@ -19,6 +19,7 @@ class UserApi {
                 // Обработка других типов ошибок
                 alert(e);
             }
+            return Promise.reject(e);
         }
     }
 
@@ -33,13 +34,23 @@ class UserApi {
             } else {
                 alert(e);
             }
+            return Promise.reject(e);
         }
     }
 
     public async check() {
-        const { data } = await $authHost.get("api/user/check");
-        localStorage.setItem("token", data.token);
-        return jwtDecode(data.token);
+        try {
+            const { data } = await $authHost.get("api/user/check");
+            localStorage.setItem("token", data.token);
+            return jwtDecode(data.token);
+        } catch (e: unknown) {
+            if (e instanceof Error && (e as CustomError).response) {
+                alert((e as CustomError).response?.data?.message);
+            } else {
+                alert(e);
+            }
+            return Promise.reject(e);
+        }
     }
 }
 

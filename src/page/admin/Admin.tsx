@@ -3,30 +3,38 @@ import style from "./Admin.module.scss";
 import { useNavigate } from "react-router-dom";
 import { MAIN_PAGE } from "../../services/ConstRoutesPaths";
 import wordsApi from "../../api/WordsApi";
+import Alert from "../../components/modals/alert/Alert";
+import { useDispatch } from "react-redux";
+import { ADD_WORD } from "../../redux/slice/WordsSlice";
 
 const Admin = () => {
     const [word, setWord] = useState<string>("");
     const [translate1, setTranslate1] = useState<string>("");
     const [translate2, setTranslate2] = useState<string>("");
     const history = useNavigate();
+    const [show, hidden] = useState<boolean>(false);
+    const dispatch = useDispatch();
 
     const goBack = (): void => {
         history(MAIN_PAGE);
     };
 
+    console.log(typeof word);
     const addTheWordInTheDictionary = () => {
-        if (word !== undefined || translate1 !== undefined) {
-            wordsApi
-                .createWord(word, translate1, translate2)
-                .catch((e) => console.log(e.message))
-                .finally(() => {
-                    setWord("");
-                    setTranslate1("");
-                    setTranslate2("");
-                });
-        } else {
-            console.log("Пустые значения");
-        }
+        wordsApi
+            .createWord(word, translate1, translate2)
+            .then(() => {
+                dispatch(ADD_WORD(true));
+                hidden(true);
+            })
+            .catch((e) => {
+                console.log(e.message);
+            })
+            .finally(() => {
+                setWord("");
+                setTranslate1("");
+                setTranslate2("");
+            });
     };
 
     return (
@@ -78,6 +86,7 @@ const Admin = () => {
                     Добавить слово
                 </button>
             </div>
+            <Alert show={show} hidden={hidden} />
         </div>
     );
 };
