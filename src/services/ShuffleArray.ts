@@ -5,6 +5,7 @@ export default function shuffleArray(array: Translate[]) {
         const j = Math.floor(Math.random() * (i + 1));
         [array[i], array[j]] = [array[j], array[i]];
     }
+    return array;
 }
 
 // Функция shuffleArray использует алгоритм тасования Фишера–Йетса,

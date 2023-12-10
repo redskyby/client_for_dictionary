@@ -8,6 +8,7 @@ import WordsApi from "../../api/WordsApi";
 import { Word } from "../../services/Interfeces";
 import { Translate } from "../../services/Interfeces";
 import { RingLoader } from "react-spinners";
+import shuffleArray from "../../services/ShuffleArray";
 
 const MainPage = () => {
     const [loading, setLoading] = useState(true);
@@ -22,7 +23,7 @@ const MainPage = () => {
             .then((data) => {
                 const { words, translations } = data;
                 dispatch(SET_WORDS(words));
-                dispatch(SET_TRANSLATES(translations));
+                dispatch(SET_TRANSLATES(shuffleArray(translations)));
                 setLoading(false);
             })
             .catch((e) => console.log(e.message));

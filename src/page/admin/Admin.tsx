@@ -19,7 +19,6 @@ const Admin = () => {
         history(MAIN_PAGE);
     };
 
-    console.log(typeof word);
     const addTheWordInTheDictionary = () => {
         wordsApi
             .createWord(word, translate1, translate2)
