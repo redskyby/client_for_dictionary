@@ -18,6 +18,7 @@ const MainPage = () => {
     const [show, hidden] = useState<boolean>(false);
     const [showEqualAlert, setShowEqualAlert] = useState<boolean>(false);
     const [wrongEqual, setWrongEqual] = useState<boolean>(false);
+    const [loadData, setLoadData] = useState<boolean>(false);
     const words: Word[] = useSelector((state: RootState) => state.WordsToolkit.words);
     const translate: Translate[] = useSelector((state: RootState) => state.WordsToolkit.translate);
 
@@ -32,12 +33,27 @@ const MainPage = () => {
             .catch((e) => console.log(e.message));
     }, []);
 
+    useEffect(() => {
+        if (loadData && words.length === 0) {
+            WordsApi.getWords()
+                .then((data) => {
+                    const { words, translations } = data;
+                    dispatch(SET_WORDS(words));
+                    dispatch(SET_TRANSLATES(shuffleArray(translations)));
+                    setLoading(false);
+                })
+                .catch((e) => console.log(e.message))
+                .finally(() => setLoadData(false));
+        }
+    }, [loadData, words.length]);
+
     const checkWords = (currentWord: Word, a: Translate) => {
         if (currentWord.wordId !== undefined) {
             if (currentWord.wordId === a.translationId) {
                 setWrongEqual(true);
                 setShowEqualAlert(true);
                 dispatch(REDUCE_ARRAY(currentWord.wordId));
+                setLoadData(true);
             } else {
                 setWrongEqual(false);
                 setShowEqualAlert(true);
