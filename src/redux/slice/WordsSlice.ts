@@ -25,8 +25,12 @@ const WordSlice = createSlice({
         ADD_WORD: (state, action: PayloadAction<boolean>) => {
             state.wordAdded = action.payload;
         },
+        REDUCE_ARRAY: (state, action: PayloadAction<number>) => {
+            state.words = [...state.words.filter((item) => item.wordId !== action.payload)];
+            state.translate = [...state.translate.filter((item) => item.translationId !== action.payload)];
+        },
     },
 });
 
 export default WordSlice.reducer;
-export const { SET_WORDS, SET_TRANSLATES, SET_CURRENT_WORD, ADD_WORD } = WordSlice.actions;
+export const { SET_WORDS, SET_TRANSLATES, SET_CURRENT_WORD, ADD_WORD, REDUCE_ARRAY } = WordSlice.actions;

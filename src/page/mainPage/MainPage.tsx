@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import style from "./MainPage.module.scss";
 import { useDispatch, useSelector } from "react-redux";
-import { SET_CURRENT_WORD, SET_TRANSLATES, SET_WORDS } from "../../redux/slice/WordsSlice";
+import { REDUCE_ARRAY, SET_CURRENT_WORD, SET_TRANSLATES, SET_WORDS } from "../../redux/slice/WordsSlice";
 import { RootState } from "../../redux";
 import Alert from "../../components/modals/alert/Alert";
 import WordsApi from "../../api/WordsApi";
@@ -31,7 +31,11 @@ const MainPage = () => {
 
     const checkWords = (currentWord: Word, a: Translate) => {
         if (currentWord.wordId !== undefined) {
-            currentWord.wordId === a.translationId ? console.log("совпало") : console.log("Не совпало");
+            if (currentWord.wordId === a.translationId) {
+                dispatch(REDUCE_ARRAY(currentWord.wordId));
+            } else {
+                console.log("Не совпало");
+            }
         } else {
             hidden(true);
         }
