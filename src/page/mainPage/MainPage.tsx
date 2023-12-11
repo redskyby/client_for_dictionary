@@ -21,11 +21,14 @@ const MainPage = () => {
     const [loadData, setLoadData] = useState<boolean>(false);
     const words: Word[] = useSelector((state: RootState) => state.WordsToolkit.words);
     const translate: Translate[] = useSelector((state: RootState) => state.WordsToolkit.translate);
+    const [totalCount, setTotalCount] = useState<number>(5);
+    const [maxCount, setMaxCount] = useState<number>(0);
 
     useEffect(() => {
         WordsApi.getWords()
             .then((data) => {
-                const { words, translations } = data;
+                const { words, translations, totalCount } = data;
+                setMaxCount(totalCount);
                 dispatch(SET_WORDS(words));
                 dispatch(SET_TRANSLATES(shuffleArray(translations)));
                 setLoading(false);
@@ -34,10 +37,11 @@ const MainPage = () => {
     }, []);
 
     useEffect(() => {
-        if (loadData && words.length === 0) {
-            WordsApi.getWords()
+        if (loadData && words.length === 0 && totalCount < maxCount) {
+            WordsApi.getWords(totalCount)
                 .then((data) => {
                     const { words, translations } = data;
+                    setTotalCount(totalCount + 5);
                     dispatch(SET_WORDS(words));
                     dispatch(SET_TRANSLATES(shuffleArray(translations)));
                     setLoading(false);

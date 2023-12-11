@@ -2,11 +2,12 @@ import { $host } from "./index";
 import { CustomError } from "../services/Interfeces";
 
 class WordsApi {
-    public async getWords() {
+    public async getWords(offsetN: number = 0) {
         try {
             const { data } = await $host.get("api/word/getAll", {
                 params: {
                     count: 5,
+                    offset: offsetN,
                 },
             });
 
