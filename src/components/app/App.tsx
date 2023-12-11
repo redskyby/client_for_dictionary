@@ -7,6 +7,7 @@ import { useDispatch } from "react-redux";
 import UserApi from "../../api/UserApi";
 import { IS_SET_AUTH } from "../../redux/slice/UserSlice";
 import { RingLoader } from "react-spinners";
+import Footer from "../footer/Footer";
 
 function App() {
     const [loading, setLoading] = useState<boolean>(true);
@@ -15,7 +16,7 @@ function App() {
     useEffect(() => {
         if (localStorage.getItem("token") !== null && localStorage.getItem("token") !== undefined) {
             UserApi.check()
-                .then((data) => {
+                .then(() => {
                     dispatch(IS_SET_AUTH(true));
                 })
                 .catch((e) => {
@@ -40,10 +41,9 @@ function App() {
 
     return (
         <BrowserRouter>
-            <div>
-                <NavBar />
-                <AppRoutes />
-            </div>
+            <NavBar />
+            <AppRoutes />
+            <Footer />
         </BrowserRouter>
     );
 }
