@@ -9,12 +9,15 @@ import { Word } from "../../services/Interfeces";
 import { Translate } from "../../services/Interfeces";
 import { RingLoader } from "react-spinners";
 import shuffleArray from "../../services/ShuffleArray";
+import AlertAfterCompareTheWords from "../../components/modals/alertAfterCompareTheWords/AlertAfterCompareTheWords";
 
 const MainPage = () => {
     const [loading, setLoading] = useState(true);
     const dispatch = useDispatch();
     const currentWord: Word = useSelector((state: RootState) => state.WordsToolkit.currentWord);
     const [show, hidden] = useState<boolean>(false);
+    const [showEqualAlert, setShowEqualAlert] = useState<boolean>(false);
+    const [wrongEqual, setWrongEqual] = useState<boolean>(false);
     const words: Word[] = useSelector((state: RootState) => state.WordsToolkit.words);
     const translate: Translate[] = useSelector((state: RootState) => state.WordsToolkit.translate);
 
@@ -32,8 +35,12 @@ const MainPage = () => {
     const checkWords = (currentWord: Word, a: Translate) => {
         if (currentWord.wordId !== undefined) {
             if (currentWord.wordId === a.translationId) {
+                setWrongEqual(true);
+                setShowEqualAlert(true);
                 dispatch(REDUCE_ARRAY(currentWord.wordId));
             } else {
+                setWrongEqual(false);
+                setShowEqualAlert(true);
                 console.log("Не совпало");
             }
         } else {
@@ -87,6 +94,7 @@ const MainPage = () => {
                 </div>
             </div>
             <Alert show={show} hidden={hidden} />
+            <AlertAfterCompareTheWords show={showEqualAlert} hidden={setShowEqualAlert} equal={wrongEqual} />
         </div>
     );
 };
