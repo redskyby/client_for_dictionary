@@ -38,7 +38,7 @@ const NavBar = () => {
                             className={style.container_block_with_buttons_button}
                             onClick={() => history(LIST_OF_ALL_WORDS)}
                         >
-                            Просмотреть всё слово
+                            Просмотреть все слова
                         </button>
                         <button
                             type={"button"}

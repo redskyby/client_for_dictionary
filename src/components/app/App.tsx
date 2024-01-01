@@ -5,9 +5,10 @@ import NavBar from "../navBar/NavBar";
 import AppRoutes from "../appRoutes/AppRoutes";
 import { useDispatch } from "react-redux";
 import UserApi from "../../api/UserApi";
-import { IS_SET_AUTH } from "../../redux/slice/UserSlice";
+import { IS_SET_AUTH, IS_SET_ROLE } from "../../redux/slice/UserSlice";
 import { RingLoader } from "react-spinners";
 import Footer from "../footer/Footer";
+import { InterfaceJWT } from "../../services/Interfeces";
 
 function App() {
     const [loading, setLoading] = useState<boolean>(true);
@@ -16,8 +17,9 @@ function App() {
     useEffect(() => {
         if (localStorage.getItem("token") !== null && localStorage.getItem("token") !== undefined) {
             UserApi.check()
-                .then(() => {
+                .then((data: InterfaceJWT) => {
                     dispatch(IS_SET_AUTH(true));
+                    dispatch(IS_SET_ROLE(data.role));
                 })
                 .catch((e) => {
                     alert(e);

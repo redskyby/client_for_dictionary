@@ -20,3 +20,11 @@ export interface Translate {
     createdAt: string;
     updatedAt: string;
 }
+
+export interface InterfaceJWT {
+    userId: number;
+    email: string;
+    role: string;
+    iat: number;
+    exp: number;
+}

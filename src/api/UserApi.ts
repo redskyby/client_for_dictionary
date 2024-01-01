@@ -1,6 +1,6 @@
 import { $authHost, $host } from "./index";
 import { jwtDecode } from "jwt-decode";
-import { CustomError } from "../services/Interfeces";
+import { CustomError, InterfaceJWT } from "../services/Interfeces";
 
 class UserApi {
     public async registration(email: string, password: string) {
@@ -40,7 +40,7 @@ class UserApi {
         }
     }
 
-    public async check() {
+    public async check(): Promise<InterfaceJWT> {
         try {
             const { data } = await $authHost.get("api/user/check");
             localStorage.setItem("token", data.token);
