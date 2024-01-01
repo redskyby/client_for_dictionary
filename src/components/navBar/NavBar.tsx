@@ -8,6 +8,7 @@ import { IS_SET_AUTH } from "../../redux/slice/UserSlice";
 
 const NavBar = () => {
     const isAuth: boolean = useSelector((state: RootState) => state.UserToolkit.isAuth);
+    const role: string = useSelector((state: RootState) => state.UserToolkit.role);
     const dispatch = useDispatch();
     const history = useNavigate();
 
@@ -26,13 +27,15 @@ const NavBar = () => {
             <div>
                 {isAuth ? (
                     <div className={style.container_block_with_buttons}>
-                        <button
-                            type={"button"}
-                            className={style.container_block_with_buttons_button}
-                            onClick={() => history(ADMIN_ROUTE)}
-                        >
-                            Панель администратора
-                        </button>
+                        {role === "admin" && (
+                            <button
+                                type={"button"}
+                                className={style.container_block_with_buttons_button}
+                                onClick={() => history(ADMIN_ROUTE)}
+                            >
+                                Панель администратора
+                            </button>
+                        )}
                         <button
                             type={"button"}
                             className={style.container_block_with_buttons_button}
