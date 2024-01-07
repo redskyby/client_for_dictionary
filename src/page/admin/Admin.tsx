@@ -22,7 +22,11 @@ const Admin = () => {
             </div>
 
             <div className={style.container_form_buttons}>
-                <button type={"button"} className={style.container_form_buttons_button} onClick={goBack}>
+                <button
+                    type={"button"}
+                    className={style.container_form_buttons_button}
+                    onClick={() => setAddWordVisible(true)}
+                >
                     Добавить слово
                 </button>
                 <button type={"button"} className={style.container_form_buttons_button} onClick={goBack}>
@@ -30,6 +34,9 @@ const Admin = () => {
                 </button>
                 <button type={"button"} className={style.container_form_buttons_button} onClick={goBack}>
                     Удалить слово
+                </button>
+                <button type={"button"} className={style.container_form_buttons_button} onClick={goBack}>
+                    Вернуться на главную страницу
                 </button>
             </div>
             <AddWord show={addWordVisible} onHide={() => setAddWordVisible(false)} />
