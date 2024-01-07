@@ -7,12 +7,12 @@ import wordsApi from "../../../api/WordsApi";
 import { ADD_WORD } from "../../../redux/slice/WordsSlice";
 import Alert from "../alert/Alert";
 
-const AddWord = () => {
+const AddWord = ({ show, onHide }: { show: boolean; onHide: React.Dispatch<React.SetStateAction<boolean>> }) => {
     const [word, setWord] = useState<string>("");
     const [translate1, setTranslate1] = useState<string>("");
     const [translate2, setTranslate2] = useState<string>("");
     const history = useNavigate();
-    const [show, hidden] = useState<boolean>(false);
+    const [showAlert, hiddenAlert] = useState<boolean>(false);
     const dispatch = useDispatch();
 
     const goBack = (): void => {
@@ -24,7 +24,7 @@ const AddWord = () => {
             .createWord(word, translate1, translate2)
             .then(() => {
                 dispatch(ADD_WORD(true));
-                hidden(true);
+                hiddenAlert(true);
             })
             .catch((e) => {
                 console.log(e.message);
@@ -37,9 +37,9 @@ const AddWord = () => {
     };
 
     return (
-        <div className={style.container}>
+        <div className={show ? style.container : style.hide}>
             <div className={style.container_main_text}>
-                <h3>Здесь вы можеть добавить новое слово в словарь</h3>
+                <h2>Панель администратора</h2>
             </div>
             <form className={style.container_form}>
                 <div className={style.container_form_labels}>
@@ -83,8 +83,11 @@ const AddWord = () => {
                 >
                     Добавить слово
                 </button>
+                <button type={"button"} className={style.container_form_buttons_button} onClick={() => onHide(false)}>
+                    Закрыть окно
+                </button>
             </div>
-            <Alert show={show} hidden={hidden} />
+            <Alert show={showAlert} hidden={hiddenAlert} />
         </div>
     );
 };
