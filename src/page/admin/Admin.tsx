@@ -40,7 +40,6 @@ const Admin = () => {
         <div className={style.container}>
             <div className={style.container_main_text}>
                 <h2>Панель администратора</h2>
-                <h3>Здесь вы можеть добавить новое слово в словарь</h3>
             </div>
             <form className={style.container_form}>
                 <div className={style.container_form_labels}>
