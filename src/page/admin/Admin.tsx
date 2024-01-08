@@ -29,10 +29,18 @@ const Admin = () => {
                 >
                     Добавить слово
                 </button>
-                <button type={"button"} className={style.container_form_buttons_button} onClick={goBack}>
+                <button
+                    type={"button"}
+                    className={style.container_form_buttons_button}
+                    onClick={() => setPutWordVisible(true)}
+                >
                     Исправить слово
                 </button>
-                <button type={"button"} className={style.container_form_buttons_button} onClick={goBack}>
+                <button
+                    type={"button"}
+                    className={style.container_form_buttons_button}
+                    onClick={() => setDeleteWordVisible(true)}
+                >
                     Удалить слово
                 </button>
                 <button type={"button"} className={style.container_form_buttons_button} onClick={goBack}>
