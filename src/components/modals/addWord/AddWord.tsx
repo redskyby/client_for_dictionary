@@ -38,10 +38,10 @@ const AddWord = ({ show, onHide }: { show: boolean; onHide: React.Dispatch<React
 
     return (
         <div className={style.first_block}>
-            {show && <div className={style.background_dark} onClick={() => onHide(true)} />}
+            {show && <div className={style.background_dark} onClick={() => onHide(false)} />}
             <div className={show ? style.container : style.hide}>
                 <div className={style.container_main_text}>
-                    <h2>Панель администратора</h2>
+                    <h2>Панель добавления слова</h2>
                 </div>
                 <form className={style.container_form}>
                     <div className={style.container_form_labels}>
