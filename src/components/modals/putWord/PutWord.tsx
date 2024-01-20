@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom";
 import Alert from "../alert/Alert";
 import { useDispatch } from "react-redux";
 import wordsApi from "../../../api/WordsApi";
-import { ADD_WORD } from "../../../redux/slice/WordsSlice";
+import { PUT_WORD } from "../../../redux/slice/WordsSlice";
 
 const PutWord = ({ show, onHide }: { show: boolean; onHide: React.Dispatch<React.SetStateAction<boolean>> }) => {
     const [id, setId] = useState<string>("");
@@ -24,7 +24,7 @@ const PutWord = ({ show, onHide }: { show: boolean; onHide: React.Dispatch<React
         wordsApi
             .putWord(id, word, translate1, translate2)
             .then(() => {
-                dispatch(ADD_WORD(true));
+                dispatch(PUT_WORD(true));
                 hiddenAlert(true);
             })
             .catch((e) => {

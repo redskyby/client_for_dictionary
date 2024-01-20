@@ -7,6 +7,8 @@ const initialState = {
     translate: [] as Translate[],
     currentWord: {} as Word,
     wordAdded: false,
+    wordPut: false,
+    wordDelete: false,
 };
 
 const WordSlice = createSlice({
@@ -25,6 +27,12 @@ const WordSlice = createSlice({
         ADD_WORD: (state, action: PayloadAction<boolean>) => {
             state.wordAdded = action.payload;
         },
+        PUT_WORD: (state, action: PayloadAction<boolean>) => {
+            state.wordPut = action.payload;
+        },
+        DELETE_WORD: (state, action: PayloadAction<boolean>) => {
+            state.wordDelete = action.payload;
+        },
         REDUCE_ARRAY: (state, action: PayloadAction<number>) => {
             state.words = [...state.words.filter((item) => item.wordId !== action.payload)];
             state.translate = [...state.translate.filter((item) => item.translationId !== action.payload)];
@@ -33,4 +41,5 @@ const WordSlice = createSlice({
 });
 
 export default WordSlice.reducer;
-export const { SET_WORDS, SET_TRANSLATES, SET_CURRENT_WORD, ADD_WORD, REDUCE_ARRAY } = WordSlice.actions;
+export const { SET_WORDS, SET_TRANSLATES, SET_CURRENT_WORD, ADD_WORD, PUT_WORD, DELETE_WORD, REDUCE_ARRAY } =
+    WordSlice.actions;

@@ -5,7 +5,7 @@ import { useDispatch } from "react-redux";
 import { MAIN_PAGE } from "../../../services/ConstRoutesPaths";
 import Alert from "../alert/Alert";
 import wordsApi from "../../../api/WordsApi";
-import { ADD_WORD } from "../../../redux/slice/WordsSlice";
+import { DELETE_WORD } from "../../../redux/slice/WordsSlice";
 
 const DeleteWord = ({ show, onHide }: { show: boolean; onHide: React.Dispatch<React.SetStateAction<boolean>> }) => {
     const [id, setId] = useState<string>("");
@@ -21,7 +21,7 @@ const DeleteWord = ({ show, onHide }: { show: boolean; onHide: React.Dispatch<Re
         wordsApi
             .deleteWord(id)
             .then(() => {
-                dispatch(ADD_WORD(true));
+                dispatch(DELETE_WORD(true));
                 hiddenAlert(true);
             })
             .catch((e) => {
