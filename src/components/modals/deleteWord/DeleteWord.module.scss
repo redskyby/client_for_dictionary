@@ -1,111 +1,111 @@
 @import "../../../services/Variables";
 
 .first_block {
-  width: 100%;
-  height: 100%;
+    width: 100%;
+    height: 100%;
 }
 
 .hide {
-  opacity: 0;
-  visibility: hidden;
-  position: fixed;
-  top: -500%;
-  transition:
-          opacity 300ms,
-          visibility 0s 300ms,
-          top 4500ms; /* Плавное появление и сокрытие */
+    opacity: 0;
+    visibility: hidden;
+    position: fixed;
+    top: -500%;
+    transition:
+        opacity 300ms,
+        visibility 0s 300ms,
+        top 4500ms; /* Плавное появление и сокрытие */
 }
 
 .background_dark {
-  z-index: 9;
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.5);
+    z-index: 9;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
 }
 
 .container {
-  opacity: 1;
-  visibility: visible;
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  transition:
-          opacity 300ms,
-          visibility 0s 300ms,
-          top 450ms; /* Плавное появление и сокрытие */
-  z-index: 10;
-  margin: 15px auto;
-  max-width: 780px;
-  width: 100%;
-  border-radius: $border-radius;
-  border: $border;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  padding: 15px 10px;
-  background-color: $background-color-fon;
-  color: #000;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: space-between;
-
-  &_main_text {
-    margin: 10px auto;
-    text-align: center;
-    h2 {
-      margin-bottom: 5px;
-    }
-  }
-  &_form {
+    opacity: 1;
+    visibility: visible;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    transition:
+        opacity 300ms,
+        visibility 0s 300ms,
+        top 450ms; /* Плавное появление и сокрытие */
+    z-index: 10;
+    margin: 15px auto;
+    max-width: 780px;
     width: 100%;
+    border-radius: $border-radius;
+    border: $border;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 15px 10px;
+    background-color: $background-color-fon;
+    color: #000;
     display: flex;
     flex-direction: column;
     align-items: center;
-    &_labels {
-      display: flex;
-      flex-direction: column;
-      width: 80%;
-      &_label {
+    justify-content: space-between;
+
+    &_main_text {
+        margin: 10px auto;
+        text-align: center;
+        h2 {
+            margin-bottom: 5px;
+        }
+    }
+    &_form {
+        width: 100%;
         display: flex;
-        flex-direction: row;
-        justify-content: space-between;
-        margin: 15px 0;
+        flex-direction: column;
         align-items: center;
-        input {
-          border-radius: $border-radius;
-          border: 1px solid #ccc;
-          padding: 0.5rem 0.5rem;
-          min-width: 350px;
-          margin-left: 5px;
+        &_labels {
+            display: flex;
+            flex-direction: column;
+            width: 80%;
+            &_label {
+                display: flex;
+                flex-direction: row;
+                justify-content: space-between;
+                margin: 15px 0;
+                align-items: center;
+                input {
+                    border-radius: $border-radius;
+                    border: 1px solid #ccc;
+                    padding: 0.5rem 0.5rem;
+                    min-width: 350px;
+                    margin-left: 5px;
+                }
+            }
         }
-      }
-    }
 
-    &_buttons {
-      width: 80%;
-      display: flex;
-      flex-direction: row;
-      justify-content: space-between;
-      align-items: center;
+        &_buttons {
+            width: 80%;
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: center;
 
-      &_button {
-        background-color: #0d6efd;
-        color: #fff;
-        border-radius: $border-radius;
-        border: 1px solid #ccc;
-        padding: 0.5rem 0.5rem;
-        transition: background-color 0.3s ease;
-        font-size: 16px;
-        margin: 15px 0;
-        cursor: pointer;
+            &_button {
+                background-color: #0d6efd;
+                color: #fff;
+                border-radius: $border-radius;
+                border: 1px solid #ccc;
+                padding: 0.5rem 0.5rem;
+                transition: background-color 0.3s ease;
+                font-size: 16px;
+                margin: 15px 0;
+                cursor: pointer;
 
-        &:hover {
-          background-color: #0957ca;
+                &:hover {
+                    background-color: #0957ca;
+                }
+            }
         }
-      }
     }
-  }
 }

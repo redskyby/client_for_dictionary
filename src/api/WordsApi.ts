@@ -59,6 +59,22 @@ class WordsApi {
             return Promise.reject(e);
         }
     }
+
+    public async deleteWord(id: string) {
+        try {
+            const { data } = await $host.delete(`api/word/delete?id=${id}`);
+
+            return data;
+        } catch (e) {
+            if (e instanceof Error && (e as CustomError).response) {
+                alert((e as CustomError).response?.data?.message);
+            } else {
+                alert(e);
+            }
+            // Возбудить reject промиса, чтобы блок catch был вызван в дальнейшем
+            return Promise.reject(e);
+        }
+    }
 }
 
 export default new WordsApi();

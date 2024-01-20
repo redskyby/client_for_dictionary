@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { MAIN_PAGE } from "../../services/ConstRoutesPaths";
 import AddWord from "../../components/modals/addWord/AddWord";
 import PutWord from "../../components/modals/putWord/PutWord";
+import DeleteWord from "../../components/modals/deleteWord/DeleteWord";
 
 const Admin = () => {
     const [addWordVisible, setAddWordVisible] = useState<boolean>(false);
@@ -50,6 +51,7 @@ const Admin = () => {
             </div>
             <AddWord show={addWordVisible} onHide={() => setAddWordVisible(false)} />
             <PutWord show={putWordVisible} onHide={() => setPutWordVisible(false)} />
+            <DeleteWord show={deleteWordVisible} onHide={() => setDeleteWordVisible(false)} />
         </div>
     );
 };
