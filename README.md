@@ -18,14 +18,12 @@ sudo systemctl status nginx
 server {
     listen 80;
     server_name your_domain.com;
-
     location / {
         # Путь к статическим файлам React-приложения
         root /path/to/your/react/app/build;
         index index.html;
         try_files $uri /index.html;
     }
-
     location /api {
         # Проксирование запросов к серверу Express на порт 5000
         proxy_pass http://localhost:5000;
