@@ -15,9 +15,11 @@ sudo systemctl status nginx
 
 Эта конфигурация Nginx
 
-server {
-    listen 80;
+
+
+    server {listen 80;
     server_name your_domain.com;
+
     location / {
         # Путь к статическим файлам React-приложения
         root /path/to/your/react/app/build;
@@ -31,8 +33,7 @@ server {
         proxy_set_header X-Real-IP $remote_addr;
         proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
         proxy_set_header X-Forwarded-Proto $scheme;
-    }
-}
+    }}
 
 Эта конфигурация Nginx настраивает проксирование запросов к серверу Express на порт 5000 для всех URL, начинающихся с /api. При этом все остальные запросы обрабатываются статическим React-приложением.
 
